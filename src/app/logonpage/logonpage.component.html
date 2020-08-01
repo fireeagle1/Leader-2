@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/scoutstrap/scoutstrap@0.1.1/dist/js/bootstrap.min.js" integrity="sha384-vZA7fWbUdVwzQZlO+dkC65mKiaTlKyDvRFeWWT/+J8nBCX0A/OJE2YaFG+m4Zhv0" crossorigin="anonymous"></script>
+<html>
+<head>
+  <title>BR Scouts Digital Services - Training</title>
+</head>
+<body>
+<div class="background"></div>
+<ons-toolbar>
+	<div class="center">
+	 BR Scouts Digital Services
+	</div>
+	<div class="right menu_sel">
+		<ons-toolbar-button (click)="openMenu()">
+		<!--	<ons-icon icon="fa-bars"></ons-icon>-->
+		</ons-toolbar-button>
+	</div>
+</ons-toolbar>
+
+	<h2 class="appheader">Welcome</h2>
+	<div style="text-align: center">
+		<br>
+       <!-- <ons-button (click)="push()">
+          Push Page
+        </ons-button> -->
+  </div>
+  <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+        Logon using your Compass account
+
+        <br> <br> SECURITY NOTICE: Login Credentials are not stored. No Data is stored in this system. 
+  </p>
+      
+  <div style="text-align: center"> 
+   <form>
+    <p>
+   
+      <ons-input  id="c"  modifier="underbar" placeholder="Username" float #username (keyup.enter)="validate(username.value,password.value)" (blur)="validate(username.value,password.value)"></ons-input>
+    </p>
+    
+    <p>
+      <ons-input id="password" modifier="underbar" type="password" placeholder="Password" float (keyup.enter)="logon(username.value,password.value)" (keydown.tab)="logon(username.value,password.value)"  #password></ons-input>
+    </p>
+  </form>
+    <div id="error">{{error_text}}</div>
+    <p style="margin-top: 30px;">
+      <ons-button *ngIf="validate2(username.value,password.value)==true" (click)="logon(username.value,password.value)">Sign in</ons-button>
+      <ons-button *ngIf="validate2(username.value,password.value)==false" (click)="logon(username.value,password.value)" disabled>Sign in</ons-button>
+
+    </p><br>
+    <ons-button  class="ql" (click)="show_cards()" ><ons-icon class="far menuicon" icon="fa-map"></ons-icon>&nbsp;Cards</ons-button>&nbsp;
+    <!--<ons-button class="ql" (click)="show_cards()" ><ons-icon class="menuicon" icon="fa-project-diagram"></ons-icon></ons-button>-->
+  
+   <div id="version">Version {{globals.version}} - Alpha Stage</div>
+
+   
+   
+ <ons-input  id="u"  modifier="underbar" placeholder="url" float [value]="globals.url"></ons-input> 
+    
+    </div>
+    <ons-modal  id="modal">
+    
+      <ons-icon icon="fa-spinner" spin="true" size="80px"></ons-icon>
+    
+    <p>Logging you on & getting your data</p>
+  </ons-modal>
